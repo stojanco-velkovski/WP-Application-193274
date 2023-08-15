@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Page</title>
+</head>
+<style>
+
+    .form-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .custom-form {
+        width: 400px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+</style>
+<body>
+<div th:replace="/layout/layout :: navbar-inside"></div>
+
+
+<div class="form-container">
+    <div class="container">
+        <form class="custom-form" method="post"th:action="${index} ? @{/search/student/index} : @{/search/student/name}">
+
+            <div class="mb-3" th:if="${index}">
+                <label for="input1" class="form-label">Index</label>
+                <input type="text" class="form-control" id="input1" name="index">
+            </div>
+
+            <div class="mb-3" th:unless="${index}">
+                <label for="input2" class="form-label">Name/Surname</label>
+                <input type="text" class="form-control" id="input2" name="name">
+            </div>
+
+            <div style="text-align: center">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
